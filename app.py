@@ -10,7 +10,7 @@ app = Flask(__name__)
 def google_search(query):
     global results
     ua = UserAgent()  # Создание случайного User-Agent
-    header = {"User-Agent": ua.random}  # Добавление заголовков с фейковым User-Agent
+    header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 OPR/114.0.0.0"}  # Добавление заголовков с фейковым User-Agent
     url = f"https://www.google.com/search?q={query}"
     
     response = requests.get(url, headers=header)
