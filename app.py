@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, send_file
 import requests
 from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
 import xlsxwriter
 
 app = Flask(__name__)
@@ -8,7 +9,8 @@ app = Flask(__name__)
 # Функция для парсинга результатов поиска в Google
 def google_search(query):
     global results
-    header = {"User-Agent": "sdfkgjslkdfjlsdkfjlksdjflkskfd"}  # Добавление заголовков с фейковым User-Agent
+    ua = UserAgent()  # Создание случайного User-Agent
+    header = {"User-Agent": ua.random}  # Добавление заголовков с фейковым User-Agent
     url = f"https://www.google.com/search?q={query}"
     
     response = requests.get(url, headers=header)
